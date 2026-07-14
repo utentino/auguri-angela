@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tanti Auguri!</title>
+    
+    <!-- Caricamento Tailwind CSS per il design responsivo (perfetto per smartphone) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Libreria per i coriandoli (Confetti) per un effetto wow -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Font eleganti e leggibili da Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Sfondo a tema ospedaliero ma allegro e moderno */
+            background: linear-gradient(135deg, #f0f9ff 0%, #ccfbf1 100%);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .font-handwriting {
+            font-family: 'Caveat', cursive;
+        }
+
+        /* Animazione fluttuante per le icone mediche sullo sfondo */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(8deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Transizioni fluide tra le due schermate */
+        .fade-in {
+            animation: fadeIn 0.8s forwards ease-out;
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.4s forwards ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.95); visibility: hidden; }
+        }
+
+        /* Stile realistico per la Ricetta Medica */
+        .prescription-paper {
+            background-color: #ffffff;
+            background-image: linear-gradient(#f1f5f9 1px, transparent 1px);
+            background-size: 100% 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Contenitore elegante per la GIF/Animazione */
+        .media-container {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 0.5rem;
+            min-height: 220px;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full overflow-x-hidden flex flex-col items-center justify-center relative">
+
+    <!-- Elementi fluttuanti di sfondo (visibili sui lati, non intralciano il testo) -->
+    <div class="fixed top-12 left-6 text-2xl md:text-3xl floating opacity-40">💊</div>
+    <div class="fixed bottom-24 right-8 text-3xl md:text-4xl floating opacity-40" style="animation-delay: 1.5s;">🩺</div>
+    <div class="fixed top-1/3 right-6 text-2xl md:text-3xl floating opacity-40" style="animation-delay: 2.5s;">🩹</div>
+    <div class="fixed bottom-16 left-8 text-2xl md:text-3xl floating opacity-40" style="animation-delay: 0.5s;">💉</div>
+
+    <!-- SCHERMATA 1: LA RICETTA MEDICA (PRE-AUGURI) -->
+    <div id="intro-screen" class="w-full max-w-sm px-5 z-10">
+        <div class="prescription-paper rounded-2xl p-6 md:p-8 border-t-8 border-teal-500 relative">
+            
+            <!-- Intestazione Ricetta -->
+            <div class="flex justify-between items-start mb-4 border-b-2 border-gray-100 pb-4">
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-slate-800">Ricetta Medica</h1>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Uso Singolo</p>
+                </div>
+                <!-- Icona Caduceo (Medicina) -->
+                <div class="text-teal-600 bg-teal-50 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21h14"/><path d="M12 21V3"/><path d="M15 5.093c4.135 1.5 6 5.407 6 9.407 0 2.25-1.5 4-3 4-1.125 0-2-.875-2-2 0-3.5-3-5.5-4-5.5"/><path d="M9 5.093C4.865 6.593 3 10.5 3 14.5c0 2.25 1.5 4 3 4 1.125 0 2-.875 2-2 0-3.5 3-5.5 4-5.5"/><path d="M12 9c-3 0-5 2.5-5 5.5 0 2 1.5 3 2.5 3s2.5-1 2.5-3c0-2-1.5-2.5-2.5-2.5"/><path d="M12 9c3 0 5 2.5 5 5.5 0 2-1.5 3-2.5 3s-2.5-1-2.5-3c0-2 1.5-2.5 2.5-2.5"/></svg>
+                </div>
+            </div>
+            
+            <!-- Dati Paziente (Corretti con Nome e Data reali) -->
+            <div class="space-y-4 text-slate-700">
+                <div class="flex justify-between items-end border-b border-gray-200 border-dashed pb-1">
+                    <span class="font-semibold text-sm">Paziente:</span>
+                    <span class="font-handwriting text-xl text-teal-800">Angela Elimiano</span>
+                </div>
+                <div class="flex justify-between items-end border-b border-gray-200 border-dashed pb-1">
+                    <span class="font-semibold text-sm">Data:</span>
+                    <span class="font-handwriting text-xl text-teal-800">14/07/2026</span>
+                </div>
+                
+                <!-- Prescrizione (Rx) - Testo semplice e puramente medico -->
+                <div class="mt-6 p-4 bg-teal-50/50 rounded-xl border border-teal-100">
+                    <p class="font-bold flex items-center text-teal-900 mb-2">
+                        <span class="text-2xl mr-2 font-serif italic">Rx</span>
+                    </p>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        Infusione in bolo di felicità. Sospensione immediata di tutti i turni di guardia e allontanamento dalle corsie ospedaliere.<br>
+                        <span class="font-semibold mt-2 block text-teal-800">Posologia:</span> Da assumere in dosi massicce oggi. Effetti collaterali attesi: relax totale e zero stress.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottone per aprire -->
+            <button onclick="openGift()" class="mt-8 w-full bg-teal-600 hover:bg-teal-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg transform transition active:scale-95 flex items-center justify-center space-x-2">
+                <span>Prescrivi Festeggiamenti</span>
+                <span class="text-xl">🎉</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- SCHERMATA 2: GLI AUGURI VERI E PROPRI (Nascosta all'inizio) -->
+    <div id="main-screen" class="hidden w-full max-w-md px-5 z-10 flex-col items-center text-center pb-8">
+        
+        <h1 class="font-handwriting text-5xl md:text-6xl text-teal-800 mb-2 mt-4 drop-shadow-sm">
+            Buon Compleanno!
+        </h1>
+        <h2 class="text-lg md:text-xl font-medium text-slate-600 mb-6">
+            Tanti auguri, Dottoressa! 🩺✨
+        </h2>
+
+        <!-- Animazione "Nativa" Indistruttibile (Zero GIF Esterne) -->
+        <div class="w-full mb-6 bg-gradient-to-br from-teal-100 to-cyan-50 p-8 rounded-3xl shadow-inner border-4 border-white relative overflow-hidden flex items-center justify-center min-h-[250px]">
+            
+            <!-- Elementi fluttuanti di sfondo -->
+            <div class="absolute text-4xl left-6 top-6 animate-pulse opacity-70">💊</div>
+            <div class="absolute text-4xl right-6 bottom-6 animate-bounce opacity-70" style="animation-duration: 3s;">🩺</div>
+            
+            <!-- Dottoressa al centro che "salta" festeggiando -->
+            <div class="relative z-10 flex flex-col items-center">
+                <div class="text-8xl animate-bounce drop-shadow-2xl">👩‍⚕️</div>
+                <div class="flex space-x-4 mt-2 text-4xl">
+                    <div class="animate-pulse">🥂</div>
+                    <div class="animate-pulse" style="animation-delay: 0.3s;">💖</div>
+                    <div class="animate-pulse" style="animation-delay: 0.6s;">🎂</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messaggio di auguri breve -->
+        <div class="bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-sm border border-teal-100 mb-8 w-full">
+            <p class="text-teal-800 font-bold text-4xl font-handwriting text-center">
+                Auguriiiiiii 💖
+            </p>
+        </div>
+
+        <!-- Bottone finale divertente -->
+        <button onclick="moreConfetti()" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 px-8 rounded-full shadow-md transform transition active:scale-95 flex items-center justify-center space-x-2 mx-auto">
+            <span>Fai esplodere altri coriandoli! 🎊</span>
+        </button>
+
+    </div>
+
+    <script>
+        // Funzione per passare dalla ricetta medica agli auguri
+        function openGift() {
+            const introScreen = document.getElementById('intro-screen');
+            const mainScreen = document.getElementById('main-screen');
+
+            // Aggiungi la classe che fa svanire la ricetta verso il basso
+            introScreen.classList.add('fade-out');
+
+            // Aspetta che l'animazione di uscita sia completa
+            setTimeout(() => {
+                introScreen.classList.add('hidden');
+                
+                // Prepara e mostra la schermata degli auguri
+                mainScreen.classList.remove('hidden');
+                mainScreen.classList.add('fade-in');
+                mainScreen.classList.add('flex');
+
+                // Lancia i coriandoli appena si apre la schermata
+                fireConfetti();
+            }, 400); // 400ms corrisponde alla durata dell'animazione CSS
+        }
+
+        // Funzione per lanciare i coriandoli automatici ai lati
+        function fireConfetti() {
+            var duration = 2500;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                // Colori festosi ma eleganti (teal, oro, blu, rosa pesca)
+                var colors = ['#0d9488', '#fbbf24', '#3b82f6', '#f43f5e'];
+                
+                // Coriandoli da sinistra
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 0.8 },
+                    colors: colors
+                });
+                // Coriandoli da destra
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 0.8 },
+                    colors: colors
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        // Funzione attivata dal bottone in basso (spara coriandoli dal centro)
+        function moreConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 90,
+                origin: { y: 0.6 },
+                colors: ['#0d9488', '#fbbf24', '#3b82f6', '#f43f5e']
+            });
+            
+            // Fa un piccolo salto "giocoso" al contenitore animato quando si preme il bottone
+            const animBox = document.querySelector('.shadow-inner') || document.querySelector('.media-container');
+            if (animBox) {
+                animBox.style.transform = 'scale(1.05)';
+                animBox.style.transition = 'transform 0.2s';
+                setTimeout(() => {
+                    animBox.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }
+    </script>
+</body>
+</html>
